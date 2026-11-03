@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Campus Event Board - IIIT Vadodara</title>
+        <meta name="description"
+            content="The Campus Event Board in IIIT Vadodara's hub for upcoming workshops, club meetups, sports, and social gatherings.">
+
+        <link rel="icon" href="favicon.png">
+
+        <meta property="og:title" content="Campus Event Board - IIIT Vadodara">
+        <meta property="og:description"
+            content="Discover upcoming workshops, club meetups, sports fixtures, and social gatherings around campus.">
+        <meta property="og:image" content="partyfun.jpeg">
+
+        <link rel="stylesheet" href="theme-dark.css">
+        <link rel="stylesheet" href="base.css">
+        <link rel="stylesheet" href="styl1e.css">
+        <script src="script3.js" defer></script>
+        <!-- Assignment 5: responsive design, Grid, design tokens, and box model -->
+
+    </head>
+
+    <body>
+
+        <a href="#main" class="skip">Skip to content</a>
+
+        <!-- header -->
+        <header id="site-header">
+            <img
+                src="https://imgs.search.brave.com/dsI9N3ibrq6fj1Y2Ug6UjynFhS_yHj2DS_D6NNCjcBk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMud2lraWEubm9j/b29raWUubmV0L2xv/Z29wZWRpYS9pbWFn/ZXMvOC84Ny9JSUlU/X1ZhZG9kYXJhX2xv/Z28uanBnL3Jldmlz/aW9uL2xhdGVzdD9j/Yj0yMDIwMDMzMDE4/MDkyOA"
+                alt="IIIT Vadodara institute logo" width="100">
+
+            <h1>Campus Event Board</h1>
+
+            <p>
+                Your ultimate hub for everything happening around
+                <abbr
+                    title="Indian Institute of Information Technology">IIIT</abbr>
+                Vadodara!
+                Discover upcoming workshops, club meetups, sports fixtures,
+                and
+                social
+                gatherings.<br>
+                Stay connected with campus life, never miss out on key
+                dates,
+                and engage
+                with your student community.
+                <b>Explore all events today and make every moment count!</b>
+            </p>
+
+        </header>
+
+        <!-- B2/B6: page-level navigation is a Grid region -->
+        <nav class="site-nav" aria-label="Primary">
+            <button class="menu-toggle" type="button"
+                aria-label="Open navigation menu" aria-expanded="false">
+                ☰
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="active" aria-current="page">Home</a>
+                <a href="event.html">Upcoming Events</a>
+                <a href="#add-event">Submit an Event</a>
+                <a href="#register">Student Registration</a>
+                <a href="#info">Event Information</a>
+                <a href="contact.html">Helpline</a>
+            </div>
+        </nav>
+
+        <!-- main content -->
+        <p class="later-message">This message is hidden for now and can be
+            revealed later with JavaScript.</p>
+
+        <main id="main">
+
+            <!-- home / welcome section -->
+            <section id="home" class="welcome">
+                <h2>Welcome to the Campus Event Board</h2>
+                <p class="section-intro">Stay updated with the latest campus
+                    activities and opportunities to participate.</p>
+                <p class="section-intro-secondary">Explore events, meet new
+                    people, and enjoy campus life.</p>
+
+                <figure>
+                    <img src="images/partyfun.jpg"
+                        alt="Students dancing and celebrating together at a campus party"
+                        width="300">
+                    <figcaption>Students celebrating at last semester's
+                        Freshers'
+                        Party</figcaption>
+                </figure>
+            </section>
+
+            <!-- upcoming events section -->
+            <section class="events">
+                <h2>Upcoming Events</h2>
+                <p class="section-intro">Discover the main events happening
+                    around campus.</p>
+
+                <!-- Lab 6: search box + status message + container.
+                     The event cards are built by script.js from events.json -->
+                <div class="search-box">
+                    <label for="search">Search events:</label><br>
+                    <input type="search" id="search"
+                        placeholder="Type an event name (Esc clears)">
+                </div>
+
+                <p id="status" aria-live="polite"></p>
+
+                <div id="event-list"></div>
+
+                <!-- Hackathon prize table (kept from the original page) -->
+                <table>
+                    <caption>Hackathon Prize List</caption>
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Prize</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1st Prize</td>
+                            <td>10,000</td>
+                        </tr>
+                        <tr>
+                            <td>2nd Prize</td>
+                            <td>7,000</td>
+                        </tr>
+                        <tr>
+                            <td>3rd Prize</td>
+                            <td>5,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- student registration section -->
+            <section id="register" class="registration">
+                <h2>Student Registration Form</h2>
+                <p class="section-intro">Register your details to participate in
+                    campus events.</p>
+                <form id="register-form" novalidate>
+                    <fieldset>
+                        <legend>Registration Form</legend>
+
+                        <label for="reg-name">Name:</label>
+                        <input type="text" id="reg-name" name="name" required
+                            placeholder="Enter your full name">
+
+                        <br>
+
+                        <label for="reg-email">Email:</label>
+                        <input type="email" id="reg-email" name="email" required
+                            placeholder="Enter your email address">
+
+                        <br>
+
+                        <label for="reg-course">Course:</label>
+                        <input type="text" id="reg-course" name="course" required>
+
+                        <br>
+
+                        <label for="reg-year">Year:</label>
+                        <input type="text" id="reg-year" name="year" required pattern="[1-4]" title="Enter your year as a number from 1 to 4">
+
+                        <br>
+
+                        <label for="reg-dob">Date of Birth:</label>
+                        <input type="date" id="reg-dob" name="dob" required>
+
+                        <br>
+
+                        <button type="submit">Submit</button>
+
+                        <p id="form-message" class="form-message" role="alert"></p>
+                    </fieldset>
+                </form>
+
+                <a href="files/syllabus.pdf" download>Download Syllabus</a>
+            </section>
+
+            <!-- submit an event section -->
+            <section id="add-event" class="event-submission">
+                <h2>Submit an Event</h2>
+                <p class="section-intro">Use this form to tell the campus
+                    community about your event.</p>
+                <form>
+                    <fieldset>
+                        <legend>Event Form</legend>
+
+                        <label for="event-title">Event Title:</label><br>
+                        <input type="text" id="event-title"
+                            name="eventTitle"
+                            placeholder="Enter event title">
+
+                        <br>
+
+                        <label for="event-date">Date:</label><br>
+                        <input type="date" id="event-date" name="eventDate"
+                            required>
+
+                        <br>
+
+                        <label for="event-location">Location:</label>
+                        <input type="text" id="event-location"
+                            name="eventLocation"
+                            placeholder="Enter event location"
+                            required>
+
+                        <br>
+
+                        <label
+                            for="event-description">Description:</label><br>
+                        <textarea id="event-description"
+                            name="eventDescription"
+                            rows="4"
+                            cols="40"
+                            placeholder="Briefly describe your event"></textarea>
+
+                        <br>
+
+                        <button type="submit">Add Event</button>
+                    </fieldset>
+                </form>
+            </section>
+
+            <!-- FAQ section -->
+            <section id="faq" class="faq">
+                <h2>Frequently Asked Questions</h2>
+                <p class="section-intro">Find quick answers to common questions
+                    about the event board.</p>
+                <details>
+                    <summary>Who can submit an event?</summary>
+                    <p>Any registered student or club representative can
+                        submit
+                        an event
+                        using the form above.</p>
+                </details>
+
+                <details>
+                    <summary>How do I download the course
+                        syllabus?</summary>
+                    <p>
+                        Use the <mark>Download Syllabus</mark> link in the
+                        Student
+                        Registration section to get the
+                        latest <code>syllabus.pdf</code>.
+                    </p>
+                </details>
+            </section>
+
+        </main>
+
+        <!-- footer -->
+        <footer>
+            <!-- Navigation tag used -->
+            <nav>
+                <a href="#home">Home</a>
+                <a href="contact.html">Helpline</a>
+            </nav>
+
+            <!-- event categories and schedule info -->
+            <section id="info" class="event-info">
+                <h2>Event Categories &amp; Schedule</h2>
+                <p class="section-intro">Check the meeting dates for each event
+                    category.</p>
+
+                <!-- Table  -->
+                <table class="event-schedule">
+                    <caption>Event category meeting day s</caption>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Meeting Day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cultural &amp; Dance</td>
+                            <td><time datetime="2026-08-25">25th
+                                    August</time></td>
+                        </tr>
+                        <tr>
+                            <td>Coding &amp; Hackathon</td>
+                            <td><time datetime="2026-09-05">5th
+                                    September</time></td>
+                        </tr>
+                        <tr>
+                            <td>Sports Club</td>
+                            <td><time datetime="2026-10-13">13th
+                                    October</time></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <address>
+                Questions? Contact us at <a
+                    href="mailto:events@iiitvadodara.ac.in">events@iiitvadodara.ac.in</a>
+            </address>
+
+            <p>&copy; Aman Raj, Priya, Gourav, Sourav, Devansh 2026</p>
+        </footer>
+
+    <script src="script.js" defer></script>
+
+    </body>
+
+</html>

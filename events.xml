@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+  <event id="1">
+      <title>Sports</title>
+      <date>2026-11-03</date>
+      <seats>140</seats>
+      <free>40</free>
+  </event>
+  <event id="2">
+      <title>Fresher's Party</title>
+      <date>2026-11-03</date>
+      <seats>160</seats>
+      <free>140</free>
+  </event>
+  <event id="3">
+       <title>Dance And Music</title>
+       <date>2026-11-03</date>
+       <seats>180</seats>
+       <free>50</free>
+   </event>
+   <event id="4">
+        <title>Hackathon</title>
+        <date>2026-11-03</date>
+        <seats>170</seats>
+        <free>40</free>
+   </event>
+     </events>

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Sports",
+    "date": "2026-11-03",
+    "seats": 140,
+    "free": false,
+    "description": "Sports activities bring energy, teamwork, and healthy competition to our campus event."
+  },
+  {
+    "id": 2,
+    "title": "Freshers' Party",
+    "date": "2026-11-03",
+    "seats": 160,
+    "free": false,
+    "description": "The Freshers' Party is a vibrant campus event welcoming new students."
+  },
+  {
+    "id": 3,
+    "title": "Dance & Music",
+    "date": "2026-11-03",
+    "seats": 180,
+    "free": false,
+    "description": "Dance is a vibrant campus event where students express creativity, energy, and emotions through different dance styles."
+  },
+  {
+    "id": 4,
+    "title": "Hackathon",
+    "date": "2026-11-03",
+    "seats": 170,
+    "free": true,
+    "description": "A Hackathon is an exciting campus event where students collaborate, innovate, and develop creative solutions to real-world problems using technology."
+  }
+  ,
+  {
+    "id": 5,
+    "title": "Quiz",
+    "date": "2026-11-04",
+    "seats": 100,
+    "free": true,
+    "description": "A fun quiz competition."
+  }
+]
+

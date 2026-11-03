@@ -1,0 +1,13 @@
+{
+  "id": 4,
+  "title": "Hackathon",
+  "date": "2026-11-03",
+  "seats": 170,
+  "free": true,
+}
+Parse error on line 6:
+...  "free": true,}
+----------------------^
+seats must be a positive number (for example 140, not “abc” or -5).
+title is required and must not be empty.
+date must be in ISO format YYYY-MM-DD (for example 2026-11-03).

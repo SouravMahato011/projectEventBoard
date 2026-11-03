@@ -1,0 +1,150 @@
+Assignment 6
+TEAM MEMBERS 
+NAME                 ROLL NO.  
+Priya                20261651067 (Team Leader)
+Aman Raj             20261651012                             
+Devansh Yadav        20261651033                     
+Sourav Mahato        20261651087 
+                 
+ Section A – Language Basics & Logic
+
+1. Difference between `let` and `const`
+ `const` is used when a variable should not be reassigned after declaration.
+`let` is used when the value of a variable may change.
+ We avoid `var` because it has function scope and allows redeclaration, which can cause confusion and unexpected errors.
+
+In our program:
+```javascript
+const eventTitle = "Tech Fest";
+let seats = 50;
+```
+ 
+2. Data types used in our program
+
+We used the following JavaScript data types:
+
+| Data type | Example |
+|---|---|
+| String | `"Tech Fest"` |
+| Number | `50` |
+| Boolean | `true` |
+
+A string stores text, a number stores numerical values, and a boolean stores either `true` or `false`.
+
+ 3. Event object and array of objects
+
+One event object from our program is:
+
+```javascript
+{
+    title: "Tech Fest",
+    date: "10 November 2026",
+    seats: 0,
+    online: false
+}
+```
+
+An array of objects is a good model because each event can store multiple related properties in one object. We can store and process multiple events using a single array.
+
+ 4. Control-flow rule from A4
+
+We used an if-else statement to decide the event status based on the available seats.
+
+```javascript
+function getStatus(seats) {
+    if (seats === 0) {
+        return "Full";
+    }
+    else if (seats < 5) {
+        return "Few left";
+    }
+    else {
+        return "Open";
+    }
+}
+```
+
+The conditions produced these results:
+
+| Event | Seats | Status |
+|---|---:|---|
+| Tech Fest | 0 | Full |
+| Coding Competition | 3 | Few left |
+| Web Development Workshop | 15 | Open |
+
+ 5. Function and arrow function
+
+**A. Function (A6)**
+
+```javascript
+function formatEvent(event) {
+    return event.title + " - " +
+           event.date + " - " +
+           getStatus(event.seats);
+}
+```
+
+This function accepts an event object as a parameter and returns a formatted string containing the event title, date and status.
+
+Example output:
+
+`Tech Fest - 10 November 2026 - Full`
+
+**B. Arrow function with array method (A7)**
+
+```javascript
+const availableEvents = events.filter(
+    event => event.seats > 0
+);
+```
+
+The arrow function checks whether an event has more than zero available seats. The `filter()` method returns a new array containing only the events that satisfy this condition.
+
+In our program, it returns Coding Competition and Web Development Workshop.
+
+ Additional explanation – A8: Variable scope
+
+A variable declared inside a function is accessible only within that function (unless it is explicitly made available through another mechanism).
+
+Example:
+
+```javascript
+function showMessage() {
+    const message = "Welcome to Campus Event Board";
+    console.log(message);
+}
+
+showMessage();
+```
+
+The variable `message` is declared inside `showMessage()`. Therefore, it cannot be directly accessed outside the function. This is called local scope.
+
+Keeping variables in the smallest possible scope makes code easier to understand and reduces unwanted access to variables.
+
+
+6.Elements selected and the methods used
+
+* querySelector: the menu button (.menu-toggle), nav links box (.nav-links), search box (#search), card container (#event-list), registration form (#register-form), name field (#reg-name) and form message (#form-message).
+* querySelectorAll: all inputs of the form (#register-form input).
+getElementById: the status line ("status").
+
+I prefer querySelector because one method works for ids, classes and tags using the same selectors as CSS, so there is less to remember.
+
+7.Event bubbling
+When we click a button, the click event runs on the button first and then “bubbles up” to its parents. Because of this, one listener on #event-list can handle every RSVP button. event.target is the exact element that was clicked, so clicked.classList.contains("rsvp-btn") tells us whether it was an RSVP button.
+
+8.The three fetch states
+
+Loading: while the file is being fetched, the page shows “Loading events...”.
+Success: the data is saved in events, the cards are drawn, and the status line shows “Showing 4 of 4 events | 163 seats left”.
+Error: if the file is missing, the internet fails or the JSON is broken, the catch block shows “Sorry, we could not load the events right now. Please try again later.” and no cards are shown.
+
+9.Validation and why the server must check again
+Built-in attributes: Name required; Email type="email" required; Course required; Year required pattern="[1-4]"; Date of Birth type="date" required.
+Custom rule:
+if (value.length < 2) {
+  nameInput.setCustomValidity("Name must be at least 2 characters long.");
+} else {
+  nameInput.setCustomValidity("");
+}
+The server must check again because browser code is in the user’s control. Someone can turn off JavaScript, change the code in DevTools, or send a request directly without using the form. So client-side checks only give quick feedback, and the real protection is the server-side check.

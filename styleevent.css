@@ -1,0 +1,589 @@
+
+* {
+  box-sizing: border-box;
+}
+
+/* 
+   A2 + A3: DESIGN SYSTEM / COLOUR PALETTE
+   Named variables avoid repeating colour values throughout the file.
+ */
+:root {
+  --brand: #E8541E;              /* HEX */
+  --accent: hsl(28 90% 52%);     /* HSL */
+  --ink: #222831;                /* HEX */
+  --paper: #FAF9F6;              /* HEX */
+  --surface: rgb(241, 236, 236);   /* RGB */
+  --muted: #666666;
+  --border: #dddddd;
+  --shadow: rgb(0 0 0 / 80%);     /* semi-transparent RGB */
+  --overlay: rgb(0 0 0 / 40%);   /* semi-transparent overlay */
+  --radius: 0.5rem;
+
+  /* A5: small type scale */
+  --text-small: 0.875rem;
+  --text-body: 1rem;
+  --text-h3: 1.25rem;
+  --text-h2: 1.75rem;
+  --text-h1: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* A5: readable font stack and body line-height */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  text-decoration:underline;
+}
+
+/* A5: reading width capped at 65ch */
+p {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* A5: type scale */
+h1 {
+  font-size: var(--text-h1);
+  text-align: center;
+  letter-spacing: 0.0625rem;
+}
+
+h2 {
+  font-size: var(--text-h2);
+}
+
+h3 {
+  font-size: var(--text-h3);
+}
+
+/* Existing selector work from Lab 4 */
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--brand);
+}
+
+/* A2/A3: examples of different colour functions */
+main > section {
+  scroll-margin-top: 1.25rem;
+}
+
+h2 + p {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+h2 ~ p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a[href^="https"]::after {
+  content: " ↗";
+  font-size: 0.85em;
+}
+
+input[type="email"],
+input[type="date"] {
+  border-left: 0.25rem solid var(--brand);
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  outline: 0.1875rem solid var(--brand);
+  outline-offset: 0.125rem;
+}
+
+th {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+tr:nth-child(even) {
+  background-color: rgb(0 0 0 / 4%);
+}
+
+nav a:first-child {
+  font-weight: bold;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+nav a:not(.active) {
+  opacity: 0.85;
+}
+
+figure::before {
+  content: "★ ";
+  font-weight: bold;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-style: italic;
+}
+
+/* Existing inheritance examples */
+.section-intro-secondary {
+  text-align: inherit;
+  text-decoration: initial;
+}
+
+.section-intro-secondary mark {
+  text-decoration: unset;
+}
+
+.section-intro {
+  line-height: inherit;
+}
+
+/* 
+   B2: PAGE LAYOUT WITH CSS GRID
+   Base/mobile layout is a single column.
+    */
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+}
+
+#site-header {
+  grid-area: header;
+}
+
+.site-nav {
+  grid-area: nav;
+}
+
+#main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
+
+/* A7: centered page container using width + auto margins */
+#main,
+#site-header > *,
+footer > * {
+  width: min(90%, 60rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header */
+#site-header {
+  background-color: var(--paper);
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+#site-header > img {
+  width: 6.25rem;
+  max-width: 100%;
+  height: auto;
+}
+
+#site-header > p {
+  width: min(90%, 65ch);
+}
+
+/* B6: responsive navigation */
+.site-nav {
+  width: min(90%, 60rem);
+  margin: 1rem auto;
+}
+
+.nav-links {
+  display: none;
+}
+
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  margin-right: 0;
+  padding: 0.5rem 0.75rem;
+  display: block;
+}
+
+.nav-links a:hover {
+  background-color: var(--accent);
+  color: var(--paper);
+  text-decoration: underline;
+}
+
+.menu-toggle {
+  display: inline-block;
+  background-color: var(--brand);
+  color: var(--paper);
+  border: 0;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font: bold 1rem Arial, sans-serif;
+}
+
+.menu-toggle:hover {
+  background-color: hsl(19 82% 40%);
+}
+
+/* A9: deliberately hidden element; unlike visibility:hidden, display:none
+   removes the element from the layout. */
+.later-message {
+  display: none;
+}
+
+.welcome {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.welcome figure {
+  margin: 1rem auto 0;
+  width: min(100%, 40rem);
+}
+
+.welcome img {
+  max-width: 100%;
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.welcome figcaption {
+  font-size: var(--text-small);
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* A8: event cards */
+.events {
+  background-color: var(--surface);
+  border: 0.0625rem solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin: 1.25rem auto;
+  width: min(90%, 60rem);
+}
+
+.events > p {
+  margin-bottom: 1rem;
+}
+
+/* B3: responsive card grid; no media query required */
+.events {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.events > h2,
+.events > p {
+  grid-column: 1 / -1;
+}
+
+.events article {
+  margin: 0;
+  padding: 1rem;
+  border: 0.0625rem solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 0.125rem 0.5rem var(--shadow);
+  background-color: var(--surface);
+}
+
+.events article p {
+  color: var(--brand);
+}
+
+.events table {
+  margin-top: 1rem;
+}
+
+/* A4: calc() for flexible width */
+.event-submission,
+.registration,
+.faq {
+  width: calc(100% - 2rem);
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Registration section */
+.registration {
+  background-image:
+    linear-gradient(var(--overlay), var(--overlay)),
+    url("https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200");
+  background-size: cover;
+  background-position: center;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  color: var(--paper);
+}
+
+.registration h2,
+.registration p,
+.registration legend,
+.registration label,
+.registration a {
+  color: var(--paper);
+}
+
+/* Submit event section */
+.event-submission {
+  background-color: var(--surface);
+  border: 0.0625rem solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+/* FAQ */
+.faq {
+  margin-top: 1.5rem;
+}
+
+details {
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  border: 0.0625rem solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--surface);
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Forms */
+input,
+textarea {
+  width: min(100%, 30rem);
+  padding: 0.5rem;
+  border: 0.0625rem solid #999999;
+  border-radius: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+button {
+  background-color: var(--brand);
+  color: var(--paper);
+  font: bold 1rem Arial, sans-serif;
+  border: none;
+  padding: 0.625rem 1.125rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: hsl(19 82% 40%);
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
+th,
+td {
+  border: 0.0625rem solid #cccccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.event-schedule th {
+  background-color: var(--brand);
+  color: var(--paper);
+}
+
+/* Footer */
+footer {
+  margin-top: 2.5rem;
+  padding: 1.25rem 0;
+  text-align: center;
+  background-color: var(--ink);
+  color: var(--paper);
+  width: 100%;
+}
+
+footer nav {
+  width: min(90%, 60rem);
+}
+
+footer a {
+  color: var(--paper);
+}
+
+footer p {
+  color: var(--paper);
+}
+
+/* 
+   B5: MOBILE-FIRST BREAKPOINT 1
+   At ~40rem, event cards become two columns.*/
+@media (min-width: 40rem) {
+  .events {
+    grid-template-columns: repeat(2, minmax(15rem, 1fr));
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
+    display: inline-block;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/*
+   B5: BREAKPOINT 2
+   At ~64rem, page gets a sidebar + main content layout.
+   The header/footer span both columns.
+ */
+@media (min-width: 64rem) {
+  body {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header header"
+      "nav main"
+      "footer footer";
+  }
+
+  #site-header {
+    text-align: center;
+  }
+
+  .site-nav {
+    width: auto;
+    margin: 0;
+    padding: 1rem;
+    align-self: stretch;
+  }
+
+  .site-nav .nav-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-links a {
+    width: 100%;
+  }
+
+  .events {
+    grid-template-columns: repeat(3, minmax(15rem, 1fr));
+  }
+
+  .welcome img {
+    height: 18rem;
+  }
+}
+
+/* B7: large-screen reading width is capped by the main container. */
+@media (min-width: 75rem) {
+  #main > section,
+  #main > .events {
+    max-width: 65rem;
+  }
+}
+
+
+
+
+/* ==========================================================
+   LAB 6: styles used by script.js
+   (existing rules above are unchanged)
+   ========================================================== */
+
+/* search box sits across the full width of the events grid */
+.search-box {
+  grid-column: 1 / -1;
+}
+
+/* cards are added by JS inside #event-list; "display: contents" lets
+   them behave as direct grid items of .events (keeps the card grid) */
+#event-list {
+  display: contents;
+}
+
+/* hide the status line when it has no text */
+#status:empty {
+  display: none;
+}
+
+/* prize table spans the whole grid row */
+.events table {
+  grid-column: 1 / -1;
+}
+
+/* small info line inside each card */
+.events article .event-meta {
+  color: var(--muted);
+  font-size: var(--text-small);
+  margin-bottom: 0.75rem;
+}
+
+/* seats label: Open / Few left / Full */
+.badge {
+  display: inline-block;
+  padding: 0.125rem 0.625rem;
+  margin-right: 0.5rem;
+  border-radius: 999px;
+  font-size: var(--text-small);
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.badge.open { background-color: #2e7d32; }
+.badge.few  { background-color: #b26a00; }
+.badge.full { background-color: #b00020; }
+
+/* card with no seats left */
+.events article.full {
+  opacity: 0.7;
+}
+
+/* disabled button (Full events) - placed after button:hover so it wins */
+button:disabled {
+  background-color: var(--muted);
+  cursor: not-allowed;
+}
+
+/* form feedback message */
+.form-message {
+  margin-top: 0.75rem;
+  font-weight: bold;
+}
+
+.form-message.error   { color: #ffb4a2; }
+.form-message.success { color: #b9f6ca; }
+
+/* hamburger menu: JS adds .open to show the links on small screens */
+@media (max-width: 39.99rem) {
+  .nav-links.open {
+    display: block;
+  }
+}
